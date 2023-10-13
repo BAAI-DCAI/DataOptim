@@ -1,0 +1,264 @@
+[
+    {
+        "id": "coco_0",
+        "image": "coco/COCO_train2014_000000318556.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nBriefly describe the content of the image."
+            },
+            {
+                "from": "gpt",
+                "value": "A very clean and well decorated empty bathroom"
+            }
+        ]
+    },
+    {
+        "id": "flickr30k_0",
+        "image": "flickr30k/1000092795.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nBriefly describe the content of the image."
+            },
+            {
+                "from": "gpt",
+                "value": "Two young guys with shaggy hair look at their hands while hanging out in the yard ."
+            }
+        ]
+    },
+    {
+        "id": "textcaps_0",
+        "image": "open_images/011e7e629fb9ae7b.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nGive a brief summary of what you see."
+            },
+            {
+                "from": "gpt",
+                "value": "Five Listerine Zero mouthwash bottles on a store shelf"
+            }
+        ]
+    },
+    {
+        "id": "vqav2_524286005",
+        "image": "coco/COCO_train2014_000000524286.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nIs that a laptop? Answer the question directly with a short sentence or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "yes"
+            }
+        ]
+    },
+    {
+        "id": "okvqa_5227415",
+        "image": "coco/COCO_train2014_000000522741.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nFor what meal is the food consumed? Answer the question directly with a short sentence or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "breakfast"
+            }
+        ]
+    },
+    {
+        "id": "ocrvqa_801672",
+        "image": "ocrvqa/1400013011.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nIs this book related to Law? Answer the question directly with a short sentence or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "No"
+            }
+        ]
+    },
+    {
+        "id": "gqa_05145757",
+        "image": "visual_genome/2327022.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWho wears a shirt? Answer the question directly with a short sentence or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "The player wears a shirt."
+            }
+        ]
+    },
+    {
+        "id": "textvqa_34601",
+        "image": "open_images/03b2dbb7dff0e32d.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nwhat brand of wine is this? Answer the question directly with a short sentence or phrase."
+            },
+            {
+                "from": "gpt",
+                "value": "chateau garraud"
+            }
+        ]
+    },
+    {
+        "id": "aokvqa_dQbC9HGBPG3RCvpPWE4cWG",
+        "image": "coco/COCO_val2014_000000133042.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nChoose the correct option for the following question: Which player has the higher jersey number?\nA. baserunner\nB. pitcher\nC. goalie\nD. quarterback\n"
+            },
+            {
+                "from": "gpt",
+                "value": "The correct option is B."
+            }
+        ]
+    },
+    {
+        "id": "ref3reg_287603",
+        "image": "coco/COCO_train2014_000000544238.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "For the given image <image>, can you provide a unique description of the area [0.0, 0.106, 0.827, 1.0]?"
+            },
+            {
+                "from": "gpt",
+                "value": "a girl baseball player"
+            }
+        ]
+    },
+    {
+        "id": "ref3rec_287603",
+        "image": "coco/COCO_train2014_000000544238.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Locate a girl baseball player in <image> and provide its coordinates, please."
+            },
+            {
+                "from": "gpt",
+                "value": "[0.0, 0.106, 0.827, 1.0]."
+            }
+        ]
+    },
+    {
+        "id": "shikra_5921",
+        "image": "flickr30k/918545497.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nAre there any trees in the image?"
+            },
+            {
+                "from": "gpt",
+                "value": "There are no trees mentioned in the given context or visible in the image, so the answer is no."
+            }
+        ]
+    },
+    {
+        "id": "llava_157711",
+        "image": "coco/COCO_train2014_000000163917.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "How could someone make a similar arrangement for a simple and refreshing table centerpiece?\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "To create a similar arrangement for a simple and refreshing table centerpiece, one could follow these steps:\n\n1. Select a few fresh flowers, preferably in soft and soothing colors such as pink, white, or lavender tulips in this case.\n2. Choose a clean, minimalist vase or glass container to hold the flowers. The vase's height and width should be proportionate to the flowers' stem length and the number of flowers you'll be using.\n3. Cut the stems of the flowers to the desired length, ensuring that the flowers' heads are slightly above the vase's rim.\n4. Carefully place the flowers in the vase, distributing them evenly to create a balanced appearance.\n5. Fill the vase with water to keep the flowers fresh and healthy.\n6. Find a suitable bottle of water or mineral water that complements the overall aesthetic you're aiming for. In this case, a green bottle matches the flowers' natural vibe.\n7. Arrange the bottle of water next to the vase, placing both items on a table, preferably near a window or another source of natural light.\n\nBy following these steps, you'll have a simple and refreshing centerpiece that combines the natural beauty of flowers and the clean, minimalist appeal of a bottle of water, creating a pleasant atmosphere for your table."
+            }
+        ]
+    },
+    {
+        "id": "svit_conversation_0",
+        "image": "visual_genome/1.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nCan you describe the overall scene in the image?"
+            },
+            {
+                "from": "gpt",
+                "value": "This appears to be an urban scene, with two men conversing on a brick sidewalk. There are various objects nearby such as a green clock on a pole, a parking meter, and bicycles parked on the sidewalk. A white work truck and other vehicles are parked along the street. Trees line the edge of the road and buildings, including a white brick building, form the backdrop."
+            },
+            {
+                "from": "human",
+                "value": "What are the men wearing?"
+            },
+            {
+                "from": "gpt",
+                "value": "One man is wearing a red shirt, black pants, and sneakers, while the other man is dressed in a grey jacket, grey pants, and brown shoes. One of the men also wears glasses."
+            },
+            {
+                "from": "human",
+                "value": "Where are the bicycles located?"
+            },
+            {
+                "from": "gpt",
+                "value": "The bicycles are parked on the sidewalk, near a tree and towards the far edge of the image."
+            },
+            {
+                "from": "human",
+                "value": "Could you tell me more about the green clock?"
+            },
+            {
+                "from": "gpt",
+                "value": "The green clock is located on a pole along the sidewalk. It is tall and quite distinct in the scene."
+            }
+        ]
+    },
+    {
+        "id": "svit_detail_0",
+        "image": "visual_genome/1.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nKindly provide a meticulous commentary on the image."
+            },
+            {
+                "from": "gpt",
+                "value": "The image captures a bustling city street during the day, bathed in sunlight and speckled with shadows cast by the surrounding urban environment. On the right side of the street, cars are parked along the curb, including a white work truck and a white sedan, their headlights are off, suggesting they've been parked there for some time.\nTwo men, engaged in conversation, command the center of the frame. The man on the left sports glasses, a red shirt, and black pants, along with a pair of sneakers. His companion, on the right, dons a grey hoodie and grey pants, offset by brown shoes. Both of them appear to be having a relaxed chat, one of them even holding his chin thoughtfully.\nNearby, a green pole supports a large, green clock, adding a pop of color to the otherwise muted urban palette. The clock's ornate design offers a vintage charm that contrasts with the modernity of the surrounding area.\nFlanking the street are buildings made of bricks, one of them painted white with a black sign on the facade. An interesting feature is the tall brick building with multiple windows and a white canopy above the entrance. The building appears to be quite old, with visible moss and wear.\nThe sidewalk is paved with bricks and houses a yellow-topped parking meter and a brown street lamp with a glass top. An older-style coin-fed parking meter also makes an appearance, reinforcing the retro vibe of the scene.\nThe street and sidewalk are lined with trees, some with sparse foliage, perhaps hinting at early spring. Under one such tree, a couple of bicycles are securely parked, waiting for their owners to return.\nIn the background, the street continues on, dotted with more parked cars and street lamps that lead the eye towards more distant buildings. Despite the bustle, the street is immaculate, reflecting a well-maintained urban area.\nOverall, the scene portrays a typical day in the city, filled with everyday activities like casual conversations, parking, and the quiet waiting of bicycles. The mix of retro and modern elements adds character to the streetscape, while the bare trees give a sense of season and time."
+            }
+        ]
+    },
+    {
+        "id": "svit_complex_0",
+        "image": "visual_genome/1.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhat color is the shirt of the man who's holding his chin?"
+            },
+            {
+                "from": "gpt",
+                "value": "The man holding his chin is wearing a red shirt."
+            }
+        ]
+    },
+    {
+        "id": "svit_referring_0",
+        "image": "visual_genome/1.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "<image>\nWhich object is located higher in the image, the clock [0.526, 0.152, 0.625, 0.717] or the sign [0.147, 0.022, 0.258, 0.325]? Locate the objects with their coordinates."
+            },
+            {
+                "from": "gpt",
+                "value": "The sign [0.147, 0.022, 0.258, 0.325] is located higher in the image compared to the clock [0.526, 0.152, 0.625, 0.717]."
+            }
+        ]
+    }
+]
