@@ -1,5 +1,5 @@
 # DataOptim
-We launch DataOptim, an MLLM benchmark where we aim to find the optimal training data for training Multimodal Large Language Models (MLLMs).
+We launch DataOptim, an MLLM benchmark and competition where we aim to find the optimal training data for training Multimodal Large Language Models (MLLMs).
 
 - Project page 🏠: http://dataoptim.org
 - HuggingFace 🤗: https://huggingface.co/datasets/BAAI/DataOptim
