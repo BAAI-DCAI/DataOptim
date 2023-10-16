@@ -25,7 +25,7 @@ More datasets are coming in the future! 🔥🔥🔥
 |GPT-4 generated|SVIT|108076|2992799|-|
 
 We use different strategies to collect the prompts for different tasks.
-- **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption.
+- **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
 - **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with appropriate length.
 - **Multiple-choice VQA.** We add an instruction before the question to ask the model to provide answers with correct options.
 - **Grounding.** We use the templates designed in [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompts.
@@ -48,7 +48,7 @@ To start training, you need to apply for and download the LLaMA-2 checkpoints [h
 Then you can prepare the environment of LLaVA according to the [instructions](https://github.com/haotian-liu/LLaVA#install).
 
 ### Datasets
-For training images, you can download the images from our [HuggingFace repository](https://huggingface.co/datasets/BAAI/DataOptim) or the original websites.
+For training images, you can download the images from our [HuggingFace repository](https://huggingface.co/datasets/BAAI/DataOptim/tree/main/images) or the original websites.
 If you already have the images, you can skip this process as the image IDs and file names are not changed.
 
 Then unzip and organize the images in following structure.
@@ -79,9 +79,10 @@ To participate the challenge, visit the [project page](http://dataoptim.org) for
 Basically, the target is to find a subset of data that can best boost the model's abilities.
 You can design your own method to find this subset.
 
-For standard setting, you only need to submit the data **IDs**, we will sample the data according to the IDs.
+For standard setting, you only need to submit the data **IDs**.
+We will sample the data according to the IDs.
 For the BYOD setting, you need to update the **full dataset** you select.
-The example submission file for both settings can be found in [example-standard.json](./example/example-standard.txt) and [example-byod.json](./example/example-byod.json), respectively.
+The example submission file for both settings can be found in [example-standard.txt](./example/example-standard.txt) and [example-byod.json](./example/example-byod.json), respectively.
 In the example, we sample 17 data from the dataset just to show the format.
 You can sample a specific amount of data according to the competition you participate.
 
