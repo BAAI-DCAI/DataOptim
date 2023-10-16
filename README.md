@@ -4,7 +4,7 @@ We launch DataOptim, an MLLM benchmark and competition where we aim to find the 
 - Project page 🏠: http://dataoptim.org
 - HuggingFace 🤗: https://huggingface.co/datasets/BAAI/DataOptim
 
-## Datasets
+## Training datasets
 Currently, the visual instruction tuning data used in the challenge contain 14 public datasets.
 More datasets are coming in the future! 🔥🔥🔥
 
@@ -40,18 +40,30 @@ We use different strategies to collect the prompts for different tasks.
 ## Prerequisites
 
 ### Models
-For now we use LLaVA as the fixed model.
-You can prepare the environment according to the [instructions](https://github.com/haotian-liu/LLaVA).
+For now we use LLaVA-LLaMA-2-7B as the fixed model.
+In this release, we use LLaVA at commit@744cb3e.
 
-### Images
-You can download the images from our HuggingFace repository or the original websites.
-If you already have the images, you can skip the above process as the image IDs and file names remain unchanged.
+To start training, you need to apply for and download the LLaMA-2 checkpoints [here](https://ai.meta.com/resources/models-and-libraries/llama-downloads/) and download the [LLaVA pretrained weights](https://huggingface.co/liuhaotian/llava-pretrain-llama-2-7b-chat).
 
-Then unzip and organize the images in following structure:
+Then you can prepare the environment of LLaVA according to the [instructions](https://github.com/haotian-liu/LLaVA#install).
+
+### Datasets
+For training images, you can download the images from our [HuggingFace repository](https://huggingface.co/datasets/BAAI/DataOptim) or the original websites.
+If you already have the images, you can skip this process as the image IDs and file names are not changed.
+
+Then unzip and organize the images in following structure.
+Note that the images should be placed directly under the directory, without any subfolders.
+
 ```
 |- images
   |- coco
+    |- COCO_train2014_000000000009.jpg
+    |- COCO_train2014_000000000025.jpg
+    |- ...
   |- filckr30k
+    |- 36979.jpg
+    |- 65567.jpg
+    |- ...
   |- ocrvqa
   |- open_images
   |- visual_genome
@@ -59,23 +71,26 @@ Then unzip and organize the images in following structure:
 
 After that, you can use this diretory as the `--image-folder` in LLaVA's training script.
 
-### Visual instruction tuning data
-In our HuggingFace repository, all of the visual instruction tuning data mentioned above are already converted to the input format of LLaVA.
+For the visual instruction tuning QAs, all of the data mentioned above are already converted to the training format of LLaVA in our HuggingFace repository.
 You can download them directly from [data.zip](https://huggingface.co/datasets/BAAI/DataOptim/blob/main/data/data.zip).
 
 ## How to participate
 To participate the challenge, visit the [project page](http://dataoptim.org) for more details.
+Basically, the target is to find a subset of data that can best boost the model's abilities.
+You can design your own method to find this subset.
 
-The example submission file for the standard setting and BYOD setting can be found [here](./example/example-standard.txt) and [here](./example/example-byod.json) respectively.
+For standard setting, you only need to submit the data **IDs**, we will sample the data according to the IDs.
+For the BYOD setting, you need to update the **full dataset** you select.
+The example submission file for both settings can be found in [example-standard.json](./example/example-standard.txt) and [example-byod.json](./example/example-byod.json), respectively.
+In the example, we sample 17 data from the dataset just to show the format.
+You can sample a specific amount of data according to the competition you participate.
 
-We will finetune the model with your selected data and respond with the evaluation results.
+Before submitting the your selected data, we recommend training and evaluating the selected data locally to validate their effectiveness.
+We provided a [script](./codes/get_subset_from_ids.py) to help convert the data IDs to the training format of LLaVA.
+After that, you can use the file as the `--data_path` in LLaVA's training script.
 
-## Training & evaluation details
-In the training stage, we first sample the data in the submitted file.
-Then based on the [pretrained weights](https://huggingface.co/liuhaotian/llava-pretrain-llama-2-7b-chat) of LLaVA-LLaMA-2-7B, we perform the finetuning stage with selected data.
-The base LLM model LLama-2-7B-Chat could be found [here](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf).
+The training script used in the competition is shown as follows, which is modified based on LLaVA's finetuning [script](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune.sh):
 
-The training script is shown as follows, which is modified based on this [script](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune.sh):
 ```
 ################## LLaMA-2 ##################
 PROMPT_VERSION="llava_llama_2"
@@ -116,9 +131,7 @@ deepspeed llava/train/train_mem.py \
     --report_to wandb
 ```
 
-In the evaluation stage, we prompt the model with questions in the benchmark and calculate the final scores.
+When receiving your submission file, we will finetune the model with your selected data and respond with the evaluation results.
 
-Currently, we use LLaVA at commit@744cb3e.
-More models may be supported in future.
-
-Contact: zhaobo@baai.ac.cn
+## Contact
+If you have any questions, you can open an issue in the GitHub repository or contact zhaobo@baai.ac.cn for more information.
