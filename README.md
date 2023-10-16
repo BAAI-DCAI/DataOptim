@@ -26,7 +26,7 @@ More datasets are coming in the future! 🔥🔥🔥
 
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption.
-- **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers of appropriate length.
+- **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with appropriate length.
 - **Multiple-choice VQA.** We add an instruction before the question to ask the model to provide answers with correct options.
 - **Grounding.** We use the templates designed in [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompts.
 - **GPT-4 generated datasets.** We keep the prompts unchanged.
@@ -120,3 +120,5 @@ In the evaluation stage, we prompt the model with questions in the benchmark and
 
 Currently, we use LLaVA at commit@744cb3e.
 More models may be supported in future.
+
+Contact: zhaobo@baai.ac.cn
