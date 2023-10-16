@@ -6,7 +6,7 @@ We launch DataOptim, an MLLM benchmark and competition where we aim to find the 
 
 ## Datasets
 Currently, the visual instruction tuning data used in the challenge contain 14 public datasets.
-More datasets are coming in the future! 🔥
+More datasets are coming in the future! 🔥🔥🔥
 
 |Category|Dataset|Images|QAs|Split|
 |:-:|:-:|:-:|:-:|:-:|
@@ -73,8 +73,9 @@ We will finetune the model with your selected data and respond with the evaluati
 ## Training & evaluation details
 In the training stage, we first sample the data in the submitted file.
 Then based on the [pretrained weights](https://huggingface.co/liuhaotian/llava-pretrain-llama-2-7b-chat) of LLaVA-LLaMA-2-7B, we perform the finetuning stage with selected data.
+The base LLM model LLama-2-7B-Chat could be found [here](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf).
 
-The training script is shown as follows:
+The training script is shown as follows, which is modified based on this [script](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune.sh):
 ```
 ################## LLaMA-2 ##################
 PROMPT_VERSION="llava_llama_2"
