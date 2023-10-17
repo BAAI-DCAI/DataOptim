@@ -4,6 +4,9 @@ We launch DataOptim, an MLLM benchmark and competition where we aim to find the 
 - Project page 🏠: http://dataoptim.org
 - HuggingFace 🤗: https://huggingface.co/datasets/BAAI/DataOptim
 
+## News
+- [2023/10/17] ScienceQA is now available in the training datasets.
+
 ## Training datasets
 Currently, the visual instruction tuning data used in the challenge contain 14 public datasets.
 More datasets are coming in the future! 🔥🔥🔥
@@ -19,6 +22,7 @@ More datasets are coming in the future! 🔥🔥🔥
 |Visual question answering|GQA|72140|943000|train|
 |Visual question answering|TextVQA|21953|34602|train|
 |Visual question answering|A-OKVQA|16540|17056|train|
+|Visual question answering|ScienceQA|6218|6218|train|
 |Grounding|RefCOCO/RefCOCO+/RefCOCOg|24407|287604|train|
 |Grounding|Shikra-RD|883|5922|train|
 |GPT-4 generated|LLaVA-Instruct-150K|81479|157712|-|
@@ -27,8 +31,8 @@ More datasets are coming in the future! 🔥🔥🔥
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
 - **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with appropriate length.
-- **Multiple-choice VQA.** We add an instruction before the question to ask the model to provide answers with correct options.
-- **Grounding.** We use the templates designed in [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompts.
+- **Multiple-choice VQA.** For OK-VQA, we add an instruction before the question to ask the model to provide answers with correct options. For ScienceQA, we use the instructions and templates designed by [M3IT](https://m3-it.github.io/) and randomly sample one to format the prompt. Only data with image context are involved.
+- **Grounding.** We use the templates designed by [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompt.
 - **GPT-4 generated datasets.** We keep the prompts unchanged.
 
 |Category|Data|Prompts|
@@ -52,7 +56,9 @@ For training images, you can download the images from our [HuggingFace repositor
 If you already have the images, you can skip this process as the image IDs and file names are not changed.
 
 Then unzip and organize the images in following structure.
-Note that the images should be placed directly under the directory, without any subfolders.
+For all datasets except ScienceQA, the images should be placed directly under the dataset's folder.
+For ScienceQA, the image is placed in a subfolder with the image's ID as the folder's name.
+This is the original structure of ScienceQA and we do not make any changes to it to keep consistency.
 
 ```
 |- images
@@ -65,8 +71,20 @@ Note that the images should be placed directly under the directory, without any 
     |- 65567.jpg
     |- ...
   |- ocrvqa
+    |- 13714.jpg
+    |- ...
   |- open_images
+    |- 0a0bc91825468c45.jpg
+    |- ...
   |- visual_genome
+    |- 1.jpg
+    |- ...
+  |- scienceqa
+    |- 1
+      |- image.png
+    |- 2
+      |- image.png
+    |- ...
 ```
 
 After that, you can use this diretory as the `--image-folder` in LLaVA's training script.
@@ -76,7 +94,7 @@ You can download them directly from [data.zip](https://huggingface.co/datasets/B
 
 ## How to participate
 To participate the challenge, visit the [project page](http://dataoptim.org) for more details.
-Basically, the target is to find a subset of data that can best boost the model's abilities.
+Basically, the target is to find a subset of data that can best enhance the model's abilities.
 You can design your own method to find this subset.
 
 For standard setting, you only need to submit the data **IDs**.
@@ -90,7 +108,8 @@ Before submitting the your selected data, we recommend training and evaluating t
 We provided a [script](./codes/get_subset_from_ids.py) to help convert the data IDs to the training format of LLaVA.
 After that, you can use the file as the `--data_path` in LLaVA's training script.
 
-The training script used in the competition is shown as follows, which is modified based on LLaVA's finetuning [script](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune.sh):
+The training script used in the competition is shown as follows, which is modified based on LLaVA's finetuning [script](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune.sh).
+For 100K data, it takes around one hour on 8xA100 40G.
 
 ```
 ################## LLaMA-2 ##################
