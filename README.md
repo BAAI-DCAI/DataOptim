@@ -30,7 +30,7 @@ More datasets are coming in the future! 🔥🔥🔥
 
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
-- **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with appropriate length.
+- **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with a short sentence or phrase.
 - **Multiple-choice VQA.** For OK-VQA, we add an instruction before the question to ask the model to provide answers with correct options. For ScienceQA, we use the instructions and templates designed by [M3IT](https://m3-it.github.io/) and randomly sample one to format the prompt. Only data with image context are involved.
 - **Grounding.** We use the templates designed by [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompt.
 - **GPT-4 generated datasets.** We keep the prompts unchanged.
@@ -87,7 +87,7 @@ This is the original structure of ScienceQA and we do not make any changes to it
     |- ...
 ```
 
-After that, you can use this diretory as the `--image-folder` in LLaVA's training script.
+After that, you can use this diretory as the `--image_folder` in LLaVA's training script.
 
 For the visual instruction tuning QAs, all of the data mentioned above are already converted to the training format of LLaVA in our HuggingFace repository.
 You can download them directly from [data.zip](https://huggingface.co/datasets/BAAI/DataOptim/blob/main/data/data.zip).
@@ -105,11 +105,14 @@ In the example, we sample 17 data from the dataset just to show the format.
 You can sample a specific amount of data according to the competition you participate.
 
 Before submitting the your selected data, we recommend training and evaluating the selected data locally to validate their effectiveness.
-We provided a [script](./codes/get_subset_from_ids.py) to help convert the data IDs to the training format of LLaVA.
-After that, you can use the file as the `--data_path` in LLaVA's training script.
+
+### Training
+We provided a [script](./tools/get_subset_from_ids.py) to help convert the data IDs to the training format of LLaVA.
+You can use this file as the `--data_path` in LLaVA's training script.
 
 The training script used in the competition is shown as follows, which is modified based on LLaVA's finetuning [script](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune.sh).
 For 100K data, it takes around one hour on 8xA100 40G.
+If the training resources are limited, you can train and evaluate the model with the support of [LoRA](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune_lora.sh) or [QLoRA](https://github.com/haotian-liu/LLaVA/blob/main/scripts/finetune_qlora.sh) locally.
 
 ```
 ################## LLaMA-2 ##################
@@ -151,7 +154,27 @@ deepspeed llava/train/train_mem.py \
     --report_to wandb
 ```
 
-When receiving your submission file, we will finetune the model with your selected data and respond with the evaluation results.
+### Evaluation
+For evaluation, we release a validation set of our benchmark to help local evaluation. More information about the benchmark will be released soon.
+
+We also provide a [script](./evaluation/run_llava_eval.py) to prompt the model with questions in the benchmark.
+To run the script, you need to 
+1. Download and unzip the validation set [images](https://huggingface.co/datasets/BAAI/DataOptim/blob/main/evaluation/val.zip)
+2. Download the validation set [QAs](https://huggingface.co/datasets/BAAI/DataOptim/blob/main/evaluation/dataoptim_val.json)
+3. Copy the [script](./evaluation//run_llava_eval.py) to LLaVA's code base with location `LLaVA/llava/eval/run_llava_eval.py`.
+
+Then run the script with following command:
+
+```
+python -m llava.eval.run_llava_eval \
+    --model-path /path/to/your/model \
+    --image-dir /path/to/val \
+    --input-file /path/to/dataoptim_val.json \
+    --result-dir /path/to/output \
+    --conv-mode llava_llama_2
+```
+
+You can find the results in the `result_dir`.
 
 ## Contact
 If you have any questions, you can open an issue in the GitHub repository or contact zhaobo@baai.ac.cn for more information.
