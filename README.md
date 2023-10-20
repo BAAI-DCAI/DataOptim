@@ -11,7 +11,7 @@ We launch DataOptim, an MLLM benchmark and competition where we aim to find the 
 Currently, the visual instruction tuning data used in the challenge contain 14 public datasets.
 More datasets are coming in the future! 🔥🔥🔥
 
-|Category|Dataset|Images|QAs|Split|
+|Category|Dataset|Images|Samples|Split|
 |:-:|:-:|:-:|:-:|:-:|
 |Image captioning|COCO|82783|414113|train|
 |Image captioning|Flickr30K|29000|145000|Karpathy train split|
@@ -27,6 +27,7 @@ More datasets are coming in the future! 🔥🔥🔥
 |Grounding|Shikra-RD|883|5922|train|
 |GPT-4 generated|LLaVA-Instruct-150K|81479|157712|-|
 |GPT-4 generated|SVIT|108076|2992799|-|
+|Total||414K|6.37M|
 
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
