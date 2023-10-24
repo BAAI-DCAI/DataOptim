@@ -48,7 +48,7 @@ We use different strategies to collect the prompts for different tasks.
 For now we use LLaVA-LLaMA-2-7B as the fixed model.
 In this release, we use LLaVA at commit@744cb3e.
 
-To start training, you need to apply for and download the LLaMA-2 checkpoints [here](https://ai.meta.com/resources/models-and-libraries/llama-downloads/) and download the [LLaVA pretrained weights](https://huggingface.co/liuhaotian/llava-pretrain-llama-2-7b-chat).
+To start training, you need to apply for and download the LLaMA-2-7B-chat-hf checkpoints [here](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf) and download the [LLaVA pretrained weights](https://huggingface.co/liuhaotian/llava-pretrain-llama-2-7b-chat).
 
 Then you can prepare the environment of LLaVA according to the [instructions](https://github.com/haotian-liu/LLaVA#install).
 
