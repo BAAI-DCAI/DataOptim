@@ -107,7 +107,7 @@ def eval_model(args):
         results[task_type].append(f"{image_id}.jpg\t{item['question']}\t{item['answer']}\t{outputs}\n")
 
     if not os.path.exists(args.result_dir):
-        os.mkdir(args.result_dir)
+        os.makedirs(args.result_dir, exist_ok=True)
 
     for task_type, result in results.items():
         result_file = os.path.join(args.result_dir, f'{task_type}.txt')
