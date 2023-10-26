@@ -5,10 +5,11 @@ We launch DataOptim, an MLLM benchmark and competition where we aim to find the 
 - HuggingFace 🤗: https://huggingface.co/datasets/BAAI/DataOptim
 
 ## News
+- [2023/10/26] VGQA, DocVQA and DVQA are now available in the training datasets.
 - [2023/10/17] ScienceQA is now available in the training datasets.
 
 ## Training datasets
-Currently, the visual instruction tuning data used in the challenge contain 14 public datasets.
+Currently, the visual instruction tuning data used in the challenge contain 17 public datasets.
 More datasets are coming in the future! 🔥🔥🔥
 
 |Category|Dataset|Images|Samples|Split|
@@ -23,11 +24,14 @@ More datasets are coming in the future! 🔥🔥🔥
 |Visual question answering|TextVQA|21953|34602|train|
 |Visual question answering|A-OKVQA|16540|17056|train|
 |Visual question answering|ScienceQA|6218|6218|train|
+|Visual question answering|Visual Genome QA (VGQA)|99280|1445322|-|
+|Visual question answering|DocVQA|10194|39463|train|
+|Visual question answering|DVQA|200000|2325316|train|
 |Grounding|RefCOCO/RefCOCO+/RefCOCOg|24407|287604|train|
 |Grounding|Shikra-RD|883|5922|train|
 |GPT-4 generated|LLaVA-Instruct-150K|81479|157712|-|
 |GPT-4 generated|SVIT|108076|2992799|-|
-|Total||420K|6.66M|
+|Total||630K|10.4M|
 
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
