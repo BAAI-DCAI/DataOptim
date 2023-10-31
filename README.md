@@ -31,7 +31,7 @@ More datasets are coming in the future! 🔥🔥🔥
 |Grounding|Shikra-RD|883|5922|train|
 |GPT-4 generated|LLaVA-Instruct-150K|81479|157712|-|
 |GPT-4 generated|SVIT|108076|2992799|-|
-|Total||630K|10.4M|
+|Total||818K|10.4M|
 
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
