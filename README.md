@@ -96,6 +96,7 @@ After that, you can use this diretory as the `--image_folder` in LLaVA's trainin
 
 For the visual instruction tuning QAs, all of the data mentioned above are already converted to the training format of LLaVA in our HuggingFace repository.
 You can download them directly from [data.zip](https://huggingface.co/datasets/BAAI/DataOptim/blob/main/data/data.zip).
+For referring QAs, the bounding box is in the form of [x1, y1, x2, y2], corresponding to the top left x, top left y, bottom right x and bottom right y. The values are float numbers normalized to [0, 1], based on the size of **original images**. As the images are padded to square before utilizing the visual encoder in LLaVA, the coordinates are also changed due to the padding behavior. We provide a script [here](./tools/expand_to_square.py) to expand the bounding boxes to square.
 
 ## How to participate
 To participate the challenge, visit the [project page](http://dataoptim.org) for more details.
@@ -136,6 +137,7 @@ deepspeed llava/train/train_mem.py \
     --mm_vision_select_layer -2 \
     --mm_use_im_start_end False \
     --mm_use_im_patch_token False \
+    --image_aspect_ratio pad \
     --bf16 True \
     --output_dir ./checkpoints/llava-$MODEL_VERSION-finetune \
     --num_train_epochs 1 \
