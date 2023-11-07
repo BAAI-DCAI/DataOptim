@@ -5,11 +5,12 @@ We launch DataOptim, an MLLM benchmark and competition where we aim to find the 
 - HuggingFace 🤗: https://huggingface.co/datasets/BAAI/DataOptim
 
 ## News
+- [2023/11/06] Data of LLaVA-v1.5 is now available in the training datasets.
 - [2023/10/26] VGQA, DocVQA and DVQA are now available in the training datasets.
 - [2023/10/17] ScienceQA is now available in the training datasets.
 
 ## Training datasets
-Currently, the visual instruction tuning data used in the challenge contain 17 public datasets.
+Currently, the visual instruction tuning data used in the challenge contain 18 public datasets.
 More datasets are coming in the future! 🔥🔥🔥
 
 |Category|Dataset|Images|Samples|Split|
@@ -31,14 +32,18 @@ More datasets are coming in the future! 🔥🔥🔥
 |Grounding|Shikra-RD|883|5922|train|
 |GPT-4 generated|LLaVA-Instruct-150K|81479|157712|-|
 |GPT-4 generated|SVIT|108076|2992799|-|
-|Total||818K|10.4M|
+|Mixed|LLaVA-v1.5|291684|665298|-|
+|Total||937K*|11.1M|
+
+*Note that the number of images are counted based on image IDs.
+There might be duplicate images across different image sources, such as COCO 2014/2017, Visual Genome, etc.
 
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
 - **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with a short sentence or phrase.
 - **Multiple-choice VQA.** For OK-VQA, we add an instruction before the question to ask the model to provide answers with correct options. For ScienceQA, we use the instructions and templates designed by [M3IT](https://m3-it.github.io/) and randomly sample one to format the prompt. Only data with image context are involved.
 - **Grounding.** We use the templates designed by [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompt.
-- **GPT-4 generated datasets.** We keep the prompts unchanged.
+- **GPT-4 generated & mixed datasets.** We keep the prompts unchanged.
 
 |Category|Data|Prompts|
 |:-:|:-:|:-:|
@@ -70,6 +75,10 @@ This is the original structure of ScienceQA and we do not make any changes to it
   |- coco
     |- COCO_train2014_000000000009.jpg
     |- COCO_train2014_000000000025.jpg
+    |- ...
+  |- coco_2017
+    |- 000000274591.jpg
+    |- 000000274593.jpg
     |- ...
   |- filckr30k
     |- 36979.jpg
