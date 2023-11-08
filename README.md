@@ -15,27 +15,29 @@ More datasets are coming in the future! 🔥🔥🔥
 
 |Category|Dataset|Images|Samples|Split|
 |:-:|:-:|:-:|:-:|:-:|
-|Image captioning|COCO|82783|414113|train|
-|Image captioning|Flickr30K|29000|145000|Karpathy train split|
-|Image captioning|TextCaps|21953|109765|train|
-|Visual question answering|VQAv2|82783|443757|train|
-|Visual question answering|OKVQA|8998|9009|train|
-|Visual question answering|OCRVQA|166041|801673|train|
-|Visual question answering|GQA|72140|943000|train|
-|Visual question answering|TextVQA|21953|34602|train|
-|Visual question answering|A-OKVQA|16540|17056|train|
-|Visual question answering|ScienceQA|6218|6218|train|
-|Visual question answering|Visual Genome QA (VGQA)|99280|1445322|-|
-|Visual question answering|DocVQA|10194|39463|train|
-|Visual question answering|DVQA|200000|2325316|train|
-|Grounding|RefCOCO/RefCOCO+/RefCOCOg|24407|287604|train|
-|Grounding|Shikra-RD|883|5922|train|
-|GPT-4 generated|LLaVA-Instruct-150K|81479|157712|-|
-|GPT-4 generated|SVIT|108076|2992799|-|
-|Mixed|LLaVA-v1.5|291684|665298|-|
-|Total||937K*|11.1M|
+|Image captioning|[COCO](https://cocodataset.org/#home)|82783|414113|train|
+|Image captioning|[Flickr30K](https://shannon.cs.illinois.edu/DenotationGraph/)|29000|145000|Karpathy train split|
+|Image captioning|[TextCaps](https://textvqa.org/textcaps/)|21953|109765|train|
+|Visual question answering|[VQAv2](https://visualqa.org/)|82783|443757|train|
+|Visual question answering|[OKVQA](https://okvqa.allenai.org/)|8998|9009|train|
+|Visual question answering|[OCRVQA](https://ocr-vqa.github.io/)|166041|801673|train|
+|Visual question answering|[GQA](https://cs.stanford.edu/people/dorarad/gqa/index.html)|72140|943000|train|
+|Visual question answering|[TextVQA](https://textvqa.org/)|21953|34602|train|
+|Visual question answering|[A-OKVQA](https://allenai.org/project/a-okvqa/home)|16540|17056|train|
+|Visual question answering|[ScienceQA](https://scienceqa.github.io/)|6218|6218|train|
+|Visual question answering|[Visual Genome QA (VGQA)](https://homes.cs.washington.edu/~ranjay/visualgenome/index.html)|99280|1445322|-|
+|Visual question answering|[DocVQA](https://www.docvqa.org/)|10194|39463|train|
+|Visual question answering|[DVQA](https://github.com/kushalkafle/DVQA_dataset)|200000|2325316|train|
+|Grounding|[RefCOCO/RefCOCO+/RefCOCOg](https://github.com/lichengunc/refer)|24407|287604|train|
+|Grounding|[Shikra-RD](https://github.com/shikras/shikra)|883|5922|train|
+|GPT-4 generated|[LLaVA-Instruct-150K](https://github.com/haotian-liu/LLaVA/blob/main/docs/Data.md)|81479|157712|-|
+|GPT-4 generated|[SVIT](https://github.com/BAAI-DCAI/Visual-Instruction-Tuning)|108076|2992799|-|
+|Mixed|[LLaVA-v1.5](https://github.com/haotian-liu/LLaVA/tree/main#visual-instruction-tuning)<sup>1</sup>|291684|665298|-|
+|Total||937K<sup>2</sup>|11.1M|
 
-*Note that the number of images are counted based on image IDs.
+<sup>1</sup> The bounding boxes in LLaVA-v1.5 are based on the padded image. You can find the discussion [here](https://github.com/haotian-liu/LLaVA/issues/606).
+
+<sup>2</sup> The number of images are counted based on image IDs.
 There might be duplicate images across different image sources, such as COCO 2014/2017, Visual Genome, etc.
 
 We use different strategies to collect the prompts for different tasks.
