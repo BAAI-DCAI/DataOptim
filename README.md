@@ -43,14 +43,14 @@ There might be duplicate images across different image sources, such as COCO 201
 We use different strategies to collect the prompts for different tasks.
 - **Image captioning.** We carefully collect 5 manually written instructions and randomly sample one as the prompt for each caption. The fourth and fifth instructions are from [InstructBLIP](https://github.com/salesforce/LAVIS/blob/main/projects/instructblip/README.md).
 - **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with a short sentence or phrase.
-- **Multiple-choice VQA.** For OK-VQA, we add an instruction before the question to ask the model to provide answers with correct options. For ScienceQA, we use the instructions and templates designed by [M3IT](https://m3-it.github.io/) and randomly sample one to format the prompt. Only data with image context are involved.
-- **Grounding.** We use the templates designed by [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompt.
+- **Multiple-choice VQA.** For A-OKVQA, we add an instruction before the question to ask the model to provide answers with correct options. For ScienceQA, we use the instructions and templates designed by [M3IT](https://m3-it.github.io/) and randomly sample one to format the prompt. Only data with image context are involved.
+- **Grounding.** For RefCOCO/RefCOCO+/RefCOCOg, we use the data and templates in [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompt.
 - **GPT-4 generated & mixed datasets.** We keep the prompts unchanged.
 
 |Category|Data|Prompts|
 |:-:|:-:|:-:|
 |Image captioning|COCO, Flickr30K, TextCaps|Describe the image as simply as possible with a sentence or phrase.<br />Give a brief summary of what you see.<br />Provide a short description of the image.<br />Write a short description for the image.<br />Briefly describe the content of the image.|
-|Open-ended VQA|VQAv2, OKVQA, OCRVQA, GQA, TextVQA|*question* Answer the question directly with a short sentence or phrase.|
+|Open-ended VQA|VQAv2, OKVQA, OCRVQA, GQA, TextVQA, VGQA, DocVQA, DVQA|*question* Answer the question directly with a short sentence or phrase.|
 |Multiple-choice VQA|A-OKVQA|Choose the correct option for the following question: *question*|
 
 ## Prerequisites
@@ -107,7 +107,7 @@ After that, you can use this diretory as the `--image_folder` in LLaVA's trainin
 
 For the visual instruction tuning QAs, all of the data mentioned above are already converted to the training format of LLaVA in our HuggingFace repository.
 You can download them directly from [data.zip](https://huggingface.co/datasets/BAAI/DataOptim/blob/main/data/data.zip).
-For referring QAs, the bounding box is in the form of [x1, y1, x2, y2], corresponding to the top left x, top left y, bottom right x and bottom right y. The values are float numbers normalized to [0, 1], based on the size of **original images**. As the images are padded to square before utilizing the visual encoder in LLaVA, the coordinates are also changed due to the padding behavior. We provide a script [here](./tools/expand_to_square.py) to expand the bounding boxes to square.
+For referring QAs, the bounding box is in the form of [x1, y1, x2, y2], corresponding to the top left x, top left y, bottom right x and bottom right y. The values are float numbers normalized to [0, 1], based on the size of **original images** (except LLaVA-v1.5, which is based on the **padded image**, see more discussion [here](https://github.com/haotian-liu/LLaVA/issues/606)). As the images are padded to square before utilizing the visual encoder in LLaVA-v1.5, the coordinates are also changed due to the padding behavior. We provide a script [here](./tools/expand_to_square.py) to expand the bounding boxes to square.
 
 ## How to participate
 To participate the challenge, visit the [project page](http://dataoptim.org) for more details.
