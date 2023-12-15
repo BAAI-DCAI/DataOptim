@@ -5,6 +5,7 @@ We launch DataOptim, an MLLM benchmark and competition where we aim to find the 
 - HuggingFace 🤗: https://huggingface.co/datasets/BAAI/DataOptim
 
 ## News
+- [2023/12/15] Data of ShareGPT4V is now available in the training datasets.
 - [2023/11/06] Data of LLaVA-v1.5 is now available in the training datasets.
 - [2023/10/26] VGQA, DocVQA and DVQA are now available in the training datasets.
 - [2023/10/17] ScienceQA is now available in the training datasets.
@@ -32,8 +33,9 @@ More datasets are coming in the future! 🔥🔥🔥
 |Grounding|[Shikra-RD](https://github.com/shikras/shikra)|883|5922|train|
 |GPT-4 generated|[LLaVA-Instruct-150K](https://github.com/haotian-liu/LLaVA/blob/main/docs/Data.md)|81479|157712|-|
 |GPT-4 generated|[SVIT](https://github.com/BAAI-DCAI/Visual-Instruction-Tuning)|108076|2992799|-|
+|GPT-4V generated|[ShareGPT-4V](https://sharegpt4v.github.io/)|87296|102025|-|
 |Mixed|[LLaVA-v1.5](https://github.com/haotian-liu/LLaVA/tree/main#visual-instruction-tuning)<sup>1</sup>|291684|665298|-|
-|Total||937K<sup>2</sup>|11.1M|
+|Total||974K<sup>2</sup>|11.2M|
 
 <sup>1</sup> The bounding boxes in LLaVA-v1.5 are based on the padded image. You can find the discussion [here](https://github.com/haotian-liu/LLaVA/issues/606).
 
@@ -45,7 +47,7 @@ We use different strategies to collect the prompts for different tasks.
 - **Open-ended VQA.** As the answers in VQA datasets are generally short, we add an instruction after the question to ask the model to provide answers with a short sentence or phrase.
 - **Multiple-choice VQA.** For A-OKVQA, we add an instruction before the question to ask the model to provide answers with correct options. For ScienceQA, we use the instructions and templates designed by [M3IT](https://m3-it.github.io/) and randomly sample one to format the prompt. Only data with image context are involved.
 - **Grounding.** For RefCOCO/RefCOCO+/RefCOCOg, we use the data and templates in [Shikra](https://github.com/shikras/shikra) and randomly sample one to format the prompt.
-- **GPT-4 generated & mixed datasets.** We keep the prompts unchanged.
+- **GPT-4/GPT-4V generated & mixed datasets.** We keep the prompts unchanged.
 
 |Category|Data|Prompts|
 |:-:|:-:|:-:|
@@ -76,31 +78,46 @@ This is the original structure of ScienceQA and we do not make any changes to it
 |- images
   |- coco
     |- COCO_train2014_000000000009.jpg
-    |- COCO_train2014_000000000025.jpg
     |- ...
   |- coco_2017
     |- 000000274591.jpg
-    |- 000000274593.jpg
+    |- ...
+  |- docvqa
+    |- ffbf0023_4.png
+    |- ...
+  |- dvqa
     |- ...
   |- filckr30k
     |- 36979.jpg
-    |- 65567.jpg
     |- ...
+  |- llava
+    |- llava_pretrain
+      |- images
   |- ocrvqa
     |- 13714.jpg
     |- ...
   |- open_images
     |- 0a0bc91825468c45.jpg
     |- ...
-  |- visual_genome
-    |- 1.jpg
-    |- ...
+  |- sam
+    |- images
   |- scienceqa
     |- 1
       |- image.png
     |- 2
       |- image.png
     |- ...
+  |- share_textvqa
+    |- images
+  |- visual_genome
+    |- 1.jpg
+    |- ...
+  |- web-celebrity
+    |- images
+  |- web-landmark
+    |- images
+  |- wikiart
+    |- images
 ```
 
 After that, you can use this diretory as the `--image_folder` in LLaVA's training script.
