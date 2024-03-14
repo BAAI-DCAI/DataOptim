@@ -4,13 +4,14 @@ DataOptim is a data repository designed to offer an optimized solution for utili
 - HuggingFace 🤗: https://huggingface.co/datasets/BAAI/DataOptim
 
 ## News
+- [2024.03.14] Data of TextOCR-GPT4V is now available!
 - [2023.12.15] Data of ShareGPT4V is now available!
 - [2023.11.06] Data of LLaVA-v1.5 is now available!
 - [2023.10.26] VGQA, DocVQA and DVQA are now available!
 - [2023.10.17] ScienceQA is now available!
 
 ## Introduction
-Currently, the visual instruction tuning data contain 19 public datasets.
+Currently, the visual instruction tuning data contain 20 public datasets.
 More datasets are coming in the future! 🔥🔥🔥
 
 |Category|Dataset|Images|Samples|Split|
@@ -18,6 +19,7 @@ More datasets are coming in the future! 🔥🔥🔥
 |Image captioning|[COCO](https://cocodataset.org/#home)|82783|414113|train|
 |Image captioning|[Flickr30K](https://shannon.cs.illinois.edu/DenotationGraph/)|29000|145000|Karpathy train split|
 |Image captioning|[TextCaps](https://textvqa.org/textcaps/)|21953|109765|train|
+|Image captioning|[TextOCR-GPT4V](https://huggingface.co/datasets/jimmycarter/textocr-gpt4v)|25114|25114|train|
 |Visual question answering|[VQAv2](https://visualqa.org/)|82783|443757|train|
 |Visual question answering|[OKVQA](https://okvqa.allenai.org/)|8998|9009|train|
 |Visual question answering|[OCRVQA](https://ocr-vqa.github.io/)|166041|801673|train|
@@ -50,7 +52,7 @@ We use different strategies to collect the prompts for different tasks.
 
 |Category|Data|Prompts|
 |:-:|:-:|:-:|
-|Image captioning|COCO, Flickr30K, TextCaps|Describe the image as simply as possible with a sentence or phrase.<br />Give a brief summary of what you see.<br />Provide a short description of the image.<br />Write a short description for the image.<br />Briefly describe the content of the image.|
+|Image captioning|COCO, Flickr30K, TextCaps, TextOCR-GPT4V|Describe the image as simply as possible with a sentence or phrase.<br />Give a brief summary of what you see.<br />Provide a short description of the image.<br />Write a short description for the image.<br />Briefly describe the content of the image.|
 |Open-ended VQA|VQAv2, OKVQA, OCRVQA, GQA, TextVQA, VGQA, DocVQA, DVQA|*question* Answer the question directly with a short sentence or phrase.|
 |Multiple-choice VQA|A-OKVQA|Choose the correct option for the following question: *question*|
 
@@ -110,7 +112,7 @@ Then unzip and organize the images in following structure.
 After that, you can use this diretory as the `--image_folder` in LLaVA's training script.
 
 For the visual instruction tuning QAs, all of the data mentioned above are already converted to the training format of LLaVA in our HuggingFace repository.
-You can download them directly from [data.zip](https://huggingface.co/datasets/BAAI/DataOptim/blob/main/data/data.zip).
+You can download them directly from [HuggingFace](https://huggingface.co/datasets/BAAI/DataOptim/tree/main/data).
 
 For referring QAs, the bounding box is in the form of [x1, y1, x2, y2], corresponding to the top left x, top left y, bottom right x and bottom right y. The values are float numbers normalized to [0, 1], based on the size of **original images**, except LLaVA-v1.5, which is based on the **padded image** (see more discussion [here](https://github.com/haotian-liu/LLaVA/issues/606)). We provide a script [here](./tools/expand_to_square.py) to expand the bounding boxes to square.
 
